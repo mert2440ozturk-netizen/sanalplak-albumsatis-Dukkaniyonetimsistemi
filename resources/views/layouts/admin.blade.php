@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <title>Admin Paneli</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 </head>
-
 <body>
 
-<div style="display: flex;">
+<div class="admin-wrapper">
 
     <aside>
         <h2>Admin Panel</h2>
@@ -24,12 +23,11 @@
         </nav>
     </aside>
 
-    <main style="flex: 1;">
+    <main class="admin-main">
         @yield('content')
     </main>
 
 </div>
 
 </body>
-
 </html>

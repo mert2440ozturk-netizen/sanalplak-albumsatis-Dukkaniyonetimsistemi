@@ -4,7 +4,7 @@
 
     <div class="album-hero">
         <div class="cover-large">
-            <i class="ti ti-vinyl"></i>
+            <img src="https://picsum.photos/seed/album{{ $album->id }}/220/220" alt="{{ $album->name }}" class="cover-img">
         </div>
         <div class="album-info">
             <h1>{{ $album->name }}</h1>

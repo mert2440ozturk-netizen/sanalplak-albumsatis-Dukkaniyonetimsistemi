@@ -9,14 +9,13 @@ use App\Http\Controllers\AdminSongController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SongController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/albums', [AlbumController::class, 'index']);
 Route::get('/albums/{id}', [AlbumController::class, 'show']);

@@ -12,31 +12,11 @@ class SongSeeder extends Seeder
     public function run(): void
     {
         $songTitlesByGenre = [
-            'Rock' => [
-                'Midnight Static', 'Broken Skyline', 'Iron Horizon', 'Rust and Thunder', 'The Last Ember',
-                'Concrete Storm', 'Wildfire Radio', 'Gasoline Hearts', 'Steel Reverie', 'Neon Wreckage',
-                'Ashfall', 'Riot on Cedar Street', 'Static Bloodline', 'The Hollow Roar', 'Voltage & Bone',
-            ],
-            'Jazz' => [
-                'Blue Velvet Hour', 'Smoke Rings', 'Amber Nightfall', 'Slow Burn Serenade', 'Midnight on 5th',
-                'Brass and Rain', 'Quiet Downtown', 'Velvet Groove', 'Late Sonata', 'Whiskey and Reeds',
-                'Sepia Waltz', 'The Long Exhale', 'Cobblestone Blues', 'After Hours Reverie', 'Moonlit Sax',
-            ],
-            'Hip Hop' => [
-                'Concrete Kingdom', 'Sidewalk Chronicles', 'Golden Hour Hustle', 'Block Party Anthem', 'Static City',
-                'Rhythm & Rise', 'Night Shift Grind', 'Corner Store Legend', 'Vinyl Dreams', 'Uptown Static',
-                'Beat the Silence', 'City Lights Cipher', 'Backstreet Symphony', 'Rise from the Static', 'Concrete Poetry',
-            ],
-            'Klasik' => [
-                'Prelude in Silver', 'Nocturne for the Lost', 'Adagio of Autumn', 'Sonata in Twilight', 'Whispers of the Strings',
-                'Serenade for Rain', 'Movement in Silence', 'Cathedral Echoes', 'Fugue of Falling Leaves', 'Overture at Dawn',
-                'Waltz of the Willows', 'Elegy for the Sea', 'Interlude in Grey', 'Symphony of Quiet Rooms', 'Requiem for Summer',
-            ],
-            'Elektronik' => [
-                'Neon Pulse', 'Synthetic Horizon', 'Digital Bloom', 'Voltage Dreams', 'Glitch and Glow',
-                'Circuit Rain', 'Midnight Frequencies', 'Chrome Heartbeat', 'Static Bloom', 'Pixel Skyline',
-                'Analog Ghosts', 'Wireframe Sunset', 'Binary Tide', 'Neon Drift', 'Electric Hollow',
-            ],
+            'Rock' => ['Stairway to Heaven', 'Bohemian Rhapsody', 'Hotel California', 'Smoke on the Water', 'Sweet Child O Mine', 'Comfortably Numb', 'Highway to Hell', 'Livin on a Prayer', 'Enter Sandman', 'Paranoid', 'Free Bird', 'Born to Run', 'Sweet Home Alabama', 'Purple Haze', 'Dream On'],
+            'Jazz' => ['So What', 'Take Five', 'My Favorite Things', 'Round Midnight', 'Autumn Leaves', 'Summertime', 'Blue in Green', 'A Night in Tunisia', 'Georgia on My Mind', 'Body and Soul', 'All Blues', 'Mack the Knife', 'Fly Me to the Moon', 'Cantaloupe Island', 'St. Thomas'],
+            'Hip Hop' => ['Juicy', 'N.Y. State of Mind', 'Lose Yourself', 'Hypnotize', 'California Love', 'Sicko Mode', 'HUMBLE', 'Alright', 'Ms. Jackson', 'Empire State of Mind', 'In Da Club', 'Raptures Delight', 'C.R.E.A.M.', 'Gin and Juice', '99 Problems'],
+            'Klasik' => ['Für Elise', 'Ode to Joy', 'Canon in D', 'Clair de Lune', 'The Blue Danube', 'Ave Maria', 'Air on the G String', 'Nessun Dorma', 'Toccata and Fugue in D Minor', 'Prelude in C Major', 'Hungarian Dance No. 5', 'Morning Mood', 'In the Hall of the Mountain King', 'Adagio for Strings', 'Rondo Alla Turca'],
+            'Elektronik' => ['One More Time', 'Around the World', 'Sandstorm', 'Windowlicker', 'Strobe', 'Ghosts n Stuff', 'Levels', 'Genesis', 'D.A.N.C.E', 'Da Funk', 'Papua New Guinea', 'Xtal', 'Firestarter', 'Block Rockin Beats', 'Music Sounds Better With You'],
         ];
 
         $genres = Genre::all();

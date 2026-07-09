@@ -1,16 +1,21 @@
 @extends('layouts.admin')
 
 @section('content')
+    <h1>Sipariş #{{ $order->id }}</h1>
+    <p class="meta">Müşteri: {{ $order->user->name }} ({{ $order->user->email }})</p>
 
-    <h1>Admin - Sipariş Detayı</h1>
-
-    <p>Sipariş: {{ $order->id }}</p>
-    <p>Müşteri: {{ $order->user->name }}</p>
-
-    <h2>Sipariş Kalemleri</h2>
-
-    @foreach ($order->orderItems as $item)
-        <p>{{ $item->album->name }} — {{ $item->unit_piece }} adet — {{ $item->unit_price }} TL</p>
-    @endforeach
-
+    <table class="admin-table">
+        <thead>
+        <tr><th>Albüm</th><th>Adet</th><th>Birim Fiyat</th></tr>
+        </thead>
+        <tbody>
+        @foreach ($order->orderItems as $item)
+            <tr>
+                <td>{{ $item->album->name }}</td>
+                <td>{{ $item->unit_piece }}</td>
+                <td>{{ $item->unit_price }} TL</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 @endsection

@@ -12,50 +12,40 @@ class AlbumSeeder extends Seeder
 {
     public function run(): void
     {
-        $albumTitlesByGenre = [
-            'Rock' => [
-                'Concrete Reverie', 'Ashfall Sessions', 'Steel Horizon', 'Rust Belt Diaries', 'Voltage Parade',
-                'The Hollow Sessions', 'Wildfire Chronicles', 'Iron Bloom', 'Static Kingdom', 'Gasoline Symphony',
-                'Neon Ruins', 'The Last Riot', 'Copper & Thunder', 'Ember Sessions', 'Broken Radio',
-            ],
-            'Jazz' => [
-                'Blue Hour Sessions', 'Velvet Downtown', 'Smoke & Brass', 'Late Night Reverie', 'Sepia Sessions',
-                'The Slow Exhale', 'Amber Groove', 'Cobblestone Nights', 'Whiskey Sessions', 'Moonlit Downtown',
-                'The Long Waltz', 'After Hours Sessions', 'Velvet Reeds', 'Quiet Brass', 'Midnight Sonata',
-            ],
-            'Hip Hop' => [
-                'Concrete Chronicles', 'Sidewalk Sessions', 'Golden Hour Cipher', 'Block Party Sessions', 'Uptown Chronicles',
-                'Vinyl Kingdom', 'City Lights Sessions', 'Corner Store Chronicles', 'Static Cipher', 'Backstreet Sessions',
-                'Rhythm Kingdom', 'Concrete Symphony', 'Night Shift Sessions', 'Rise Sessions', 'Beat Chronicles',
-            ],
-            'Klasik' => [
-                'Preludes for Autumn', 'Nocturne Sessions', 'Adagio Chronicles', 'Sonatas in Grey', 'Cathedral Sessions',
-                'Serenades for Rain', 'Waltz Chronicles', 'Elegy Sessions', 'Fugue Chronicles', 'Overture Sessions',
-                'Movements in Silence', 'Requiem Sessions', 'Interludes for Strings', 'Symphony of Rooms', 'Whispered Sonatas',
-            ],
-            'Elektronik' => [
-                'Neon Sessions', 'Synthetic Bloom', 'Digital Horizon', 'Voltage Sessions', 'Circuit Chronicles',
-                'Chrome Sessions', 'Pixel Chronicles', 'Analog Sessions', 'Wireframe Chronicles', 'Binary Sessions',
-                'Static Pulse', 'Neon Chronicles', 'Electric Sessions', 'Glitch Chronicles', 'Drift Sessions',
-            ],
+        $artistsByGenre = [
+            'Rock' => ['Led Zeppelin', 'Pink Floyd', 'The Rolling Stones', 'Queen', 'Nirvana', 'AC/DC', 'Guns N\' Roses', 'The Beatles', 'Metallica', 'Radiohead', 'Foo Fighters', 'Red Hot Chili Peppers'],
+            'Jazz' => ['Miles Davis', 'John Coltrane', 'Duke Ellington', 'Louis Armstrong', 'Charlie Parker', 'Thelonious Monk', 'Ella Fitzgerald', 'Billie Holiday', 'Herbie Hancock', 'Dizzy Gillespie', 'Chet Baker', 'Nina Simone'],
+            'Hip Hop' => ['Kendrick Lamar', 'Jay-Z', 'Nas', 'Eminem', 'Tupac Shakur', 'The Notorious B.I.G.', 'OutKast', 'A Tribe Called Quest', 'Wu-Tang Clan', 'Kanye West', 'Dr. Dre', 'Snoop Dogg'],
+            'Klasik' => ['Ludwig van Beethoven', 'Wolfgang Amadeus Mozart', 'Johann Sebastian Bach', 'Frédéric Chopin', 'Pyotr Ilyich Tchaikovsky', 'Antonio Vivaldi', 'Franz Schubert', 'Johannes Brahms', 'Claude Debussy', 'Franz Liszt', 'Joseph Haydn', 'Georg Friedrich Handel'],
+            'Elektronik' => ['Daft Punk', 'Kraftwerk', 'The Chemical Brothers', 'Aphex Twin', 'Deadmau5', 'Justice', 'Moby', 'Jean-Michel Jarre', 'Fatboy Slim', 'The Prodigy', 'Boards of Canada', 'Röyksopp'],
         ];
 
-        $artistIds = Artist::pluck('id');
+        $albumTitlesByGenre = [
+            'Rock' => ['Led Zeppelin IV', 'The Dark Side of the Moon', 'Sticky Fingers', 'A Night at the Opera', 'Nevermind', 'Back in Black', 'Appetite for Destruction', 'Abbey Road', 'Master of Puppets', 'OK Computer', 'Wasting Light', 'Californication'],
+            'Jazz' => ['Kind of Blue', 'A Love Supreme', 'Ellington at Newport', 'Plays W.C. Handy', 'Bird and Diz', 'Brilliant Corners', 'Ella and Louis', 'Lady in Satin', 'Head Hunters', 'Groovin High', 'Chet Baker Sings', 'Little Girl Blue'],
+            'Hip Hop' => ['Illmatic', 'The Blueprint', 'Good Kid M.A.A.D City', 'The Chronic', 'Ready to Die', 'Aquemini', 'The Low End Theory', 'Enter the Wu-Tang', 'My Beautiful Dark Twisted Fantasy', 'The Marshall Mathers LP', 'To Pimp a Butterfly', 'Doggystyle'],
+            'Klasik' => ['Symphony No. 5', 'The Four Seasons', 'Moonlight Sonata Collection', 'Requiem in D Minor', 'The Well-Tempered Clavier', 'Symphony No. 9 Choral', 'Nocturnes', 'Swan Lake', 'Brandenburg Concertos', 'Hungarian Rhapsodies', 'The Planets', 'Messiah'],
+            'Elektronik' => ['Discovery', 'Homework', 'Selected Ambient Works 85-92', 'Music Has the Right to Children', 'Random Access Memories', 'Play', 'Cross', 'Oxygène', 'You\'ve Come a Long Way Baby', 'The Fat of the Land', 'Random Album Title', 'Melody A.M.'],
+        ];
+
         $genres = Genre::all();
 
         foreach ($genres as $genre) {
-            $titles = $albumTitlesByGenre[$genre->name] ?? [];
+            $artistNames = $artistsByGenre[$genre->name] ?? [];
+            $albumTitles = $albumTitlesByGenre[$genre->name] ?? [];
 
-            if (empty($titles)) {
+            if (empty($artistNames) || empty($albumTitles)) {
                 continue;
             }
+
+            $genreArtists = Artist::whereIn('name', $artistNames)->pluck('id');
 
             Album::factory()
                 ->count(10)
                 ->create([
-                    'artist_id' => fn () => $artistIds->random(),
+                    'artist_id' => fn () => $genreArtists->random(),
                     'genre_id' => $genre->id,
-                    'name' => fn () => $titles[array_rand($titles)],
+                    'name' => fn () => $albumTitles[array_rand($albumTitles)],
                 ]);
         }
     }
