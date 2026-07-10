@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 
 class SongController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $songs = Song::all();
-        return view('songs.index', ['songs' => $songs]);
+        $query = $request->input('q');
+
+        $songs = Song::when($query, fn ($q) => $q->where('name', 'like', '%' . $query . '%'))->get();
+
+        return view('songs.index', ['songs' => $songs, 'query' => $query]);
     }
 
 }
