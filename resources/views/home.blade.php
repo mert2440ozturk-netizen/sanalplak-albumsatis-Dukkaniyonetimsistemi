@@ -5,6 +5,11 @@
     <div class="hero">
         <h1>Sanal Plak Dükkanı</h1>
         <p>Yüzlerce albümü keşfet, sanatçılara göz at, türlere göre gezin.</p>
+
+        <form method="GET" action="/albums" class="hero-search">
+            <input type="text" name="q" placeholder="Albüm ara...">
+            <button type="submit">Ara</button>
+        </form>
     </div>
 
     <h2>Öne Çıkan Albümler</h2>

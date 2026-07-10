@@ -4,6 +4,15 @@
 
     <h1>Albümler</h1>
 
+    <form method="GET" action="/albums" class="search-form">
+        <input type="text" name="q" placeholder="Albüm adı ara..." value="{{ $query }}">
+        <button type="submit">Ara</button>
+    </form>
+
+    @if ($query && $albums->isEmpty())
+        <p class="no-results">"{{ $query }}" için sonuç bulunamadı.</p>
+    @endif
+
     <div class="simple-album-grid">
         @foreach ($albums as $album)
             <a href="/albums/{{ $album->id }}" class="simple-album-card">

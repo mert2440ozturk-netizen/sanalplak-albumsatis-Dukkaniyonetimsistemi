@@ -13,13 +13,12 @@
         <div class="header-inner">
             <a href="/" class="logo">Sanal Plak Dükkanı</a>
             <nav>
-                <nav>
-                    <a href="/">Ana Sayfa</a>
-                    <a href="/albums">Albümler</a>
-                    <a href="/artists">Sanatçılar</a>
-                    <a href="/genres">Türler</a>
-                    <a href="/profile/orders">Siparişlerim</a>
-                </nav>
+                <a href="/">Ana Sayfa</a>
+                <a href="/albums">Albümler</a>
+                <a href="/artists">Sanatçılar</a>
+                <a href="/genres">Türler</a>
+                <a href="/songs">Şarkılar</a>
+                <a href="/profile/orders">Siparişlerim</a>
             </nav>
         </div>
     </header>

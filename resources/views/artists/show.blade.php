@@ -4,7 +4,7 @@
 
     <div class="artist-hero">
         <div class="artist-avatar-large">
-            <i class="ti ti-microphone-2"></i>
+            <img src="https://picsum.photos/seed/artist{{ $artist->id }}/160/160" alt="" class="avatar-img">
         </div>
         <div class="artist-info">
             <h1>{{ $artist->name }}</h1>
