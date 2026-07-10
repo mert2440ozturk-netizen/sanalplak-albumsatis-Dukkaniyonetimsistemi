@@ -18,7 +18,7 @@ class AdminAlbumController extends Controller
     {
         $album = Album::find($id);
 
-        if(!$album == null){
+        if(!$album){
             abort(404);
         }
 
